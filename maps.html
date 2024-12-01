@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maps</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        let userLocation;
+        const map = L.map('map').setView([0, -0.0], 18);
+
+        // Add a marker for the user's location
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(position => {
+                userLocation = [position.coords.latitude, position.coords.longitude];
+                map.setView(userLocation, 18);
+                L.marker(userLocation).addTo(map);
+            });
+        }
+
+        // Base Layers
+        const streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        });
+
+        const satelliteLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            maxZoom: 19,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+            attribution: '© Google Satellite'
+        });
+
+        // CartoDB: Modern and minimalistic.
+        const CartoDB = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '© CartoDB'
+        }).addTo(map);
+
+
+        // Add default layer to map
+        streetLayer.addTo(map);
+
+        // Layer Control
+        const baseLayers = {
+            "Street Map": streetLayer,
+            "Satellite View": satelliteLayer,
+            "CartoDB View": CartoDB
+        };
+        L.control.layers(baseLayers).addTo(map);
+    </script>
+</body>
+
+</html>

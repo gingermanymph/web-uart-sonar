@@ -1,0 +1,105 @@
+html,
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    overflow: hidden;
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+#startButton {
+    /* margin: 2px; */
+    padding: 2px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#startButton:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.container {
+    background-color: lightslategray;
+    display: flex;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    /* width: 100vw; */
+    /* height: 100%; */
+}
+
+#splitter {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    width: 1px;
+    background-color: white;
+    box-shadow: 0px 0px 1px black;
+    opacity: 0.7;
+    z-index: 99999 !important;
+}
+
+#tableLevle>span {
+    position: absolute;
+    font-size: 12px;
+    text-shadow: 0px 0px 4px black;
+    color: white;
+    opacity: 0.7;
+}
+
+#demoLabel {
+    position: absolute;
+    left: 0px;
+}
+
+#currentLevel::before{
+    content: "❯";
+    display: none;
+}
+
+#currentLevel {
+    position: absolute;
+    font-size: 12px;
+}
+
+.controls {
+    position: absolute;
+}
+
+#plotCanvas {
+    background-color: rgb(255, 255, 255);
+}
+
+/* test */
+
+.canvasContainer{
+    display: block;
+    pointer-events: auto;
+}
+
+canvas{
+    /* aspect-ratio: auto 1350 / 12000; */
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    /* width: calc(100% - 400px); */
+
+}
+
+#maps{
+    position: absolute;
+    height: 100%;
+    opacity: 0.7;
+    z-index: 99999 !important;
+}
+#maps > iframe{
+    padding: 0;
+    margin: 0;
+    height: calc(100% - 25px);
+}

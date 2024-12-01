@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Serial API Example</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+
+<body onresize="setSize();">
+    <div class="controls">
+        <!-- <button id="startButton">Connect</button> -->
+        <a id="startButton">Connect</a>
+        <input id="zeroValue" type="checkbox" checked>Ingore errors</input>
+        <input id="showLines" type="checkbox" checked>Show lines</input>
+        <input id="showBottom" type="checkbox" checked>Show bottom</input>
+        <input id="depthRange" type="checkbox">Depth range</input>
+        <input id="maxDepthValue" type="range" min="0" max="10" disabled></input>
+        <select id="theme">
+            <option value="default">Default</option>
+            <option value="dark">Dark</option>
+            <option value="sepia">Sepia</option>
+          </select>
+        <span id="level"></span>
+    </div>
+    <div class="container">
+        <hr id="splitter">
+        <div id="maps">
+            <iframe src="/maps.html" frameborder="0"></iframe>
+        </div>
+        <div class="canvasContainer">
+            <canvas id="plotCanvas"></canvas>
+        </div>
+        <span id="demoLabel">DEMO IS RUNNING</span>
+        <span id="currentLevel"></span>
+        <div id="tableLevle">
+            <span id="value0"></span>
+            <span id="value1"></span>
+            <span id="value2"></span>
+            <span id="value3"></span>
+            <span id="value4"></span>
+            <span id="value5"></span>
+            <span id="value6"></span>
+            <span id="value7"></span>
+            <span id="value8"></span>
+            <span id="value9"></span>
+        </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
